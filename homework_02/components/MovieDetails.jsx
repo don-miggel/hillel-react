@@ -1,5 +1,7 @@
 
 const MovieDetails=({selectedMovie})=>{
+    if(!selectedMovie) return null;
+    
     return (
         <>
             <br />
