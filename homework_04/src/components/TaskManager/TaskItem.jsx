@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './TaskItem.css'
 
 export default function TaskItem({ task, onUpdate, onDelete }) {
 
@@ -31,12 +32,17 @@ export default function TaskItem({ task, onUpdate, onDelete }) {
   };
 
   return (
-    <li>
-      {Object.entries(task).map(([key, value]) => (
-        <div key={key}>
-          <strong>{key}:</strong>{" "}
+    <li className="task-card">
+       <div className="task-header">
+        <h3>Task #{task.id}</h3>
+      </div>
+      {Object.entries(task).filter(([key]) => key !== 'id').map(([key, value]) => (
+        <div key={key} className="task-field">
+          <strong className="field-label">
+            {key}
+          </strong>
           {isEditing?.id === task.id && isEditing?.key === key ? (
-            <>
+            <div className="editor-container">
               {key === "isDone" ? (
                 <input
                   type="checkbox"
@@ -44,7 +50,7 @@ export default function TaskItem({ task, onUpdate, onDelete }) {
                   onChange={(e) => setEditedValue(e.target.checked)}
                 />
               ) : key === "assignee" ? (
-                <>
+                <div className="assignee-editor">
                   <input
                     type="text"
                     value={editedValue.name}
@@ -70,7 +76,7 @@ export default function TaskItem({ task, onUpdate, onDelete }) {
                 </option>
               ))}
           </select>
-                </>
+                </div>
               ) : (
                 <input
                   type="text"
@@ -78,11 +84,13 @@ export default function TaskItem({ task, onUpdate, onDelete }) {
                   onChange={(e) => setEditedValue(e.target.value)}
                 />
               )}
-              <button onClick={saveEdit}>Save</button>
-              <button onClick={cancelEdit}>Cancel</button>
-            </>
+              <div className="editor-buttons">
+                <button onClick={saveEdit}>Save</button>
+                <button onClick={cancelEdit}>Cancel</button>
+              </div>
+            </div>
           ) : (
-            <span onClick={() => startEditing(task.id, key, value)}>
+            <span  className="field-value" onClick={() => startEditing(task.id, key, value)}>
               {Array.isArray(value)
                 ? value.join(", ")
                 : typeof value === "object" && value !== null
@@ -92,7 +100,7 @@ export default function TaskItem({ task, onUpdate, onDelete }) {
           )}
         </div>
       ))}
-      <button onClick={onDelete}>Delete</button>
+      <button  className="delete-btn" onClick={onDelete}>Delete Task</button>
     </li>
   );
 }

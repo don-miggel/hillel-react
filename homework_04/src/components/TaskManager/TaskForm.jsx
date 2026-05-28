@@ -1,6 +1,10 @@
-import { useState } from "react";
+import "./TaskForm.css";
 
-export default function TaskForm({onAdd, formData,  setFormData}) {
+export default function TaskForm({
+  onAdd,
+  formData,
+  setFormData
+}) {
 
   const initialTaskState = {
     title: "",
@@ -10,17 +14,19 @@ export default function TaskForm({onAdd, formData,  setFormData}) {
       level: "junior",
     },
     isDone: false,
-  } ;
+  };
 
-  const handleClearForm =()=>{
-      setFormData(initialTaskState);
-  }
+  const handleClearForm = () => {
+    setFormData(initialTaskState);
+  };
 
   function handleChange(e) {
+
     const { name, value, type, checked } = e.target;
 
     if (type === "checkbox") {
-      setFormData((prev) => ({
+
+      setFormData(prev => ({
         ...prev,
         [name]: checked,
       }));
@@ -29,9 +35,10 @@ export default function TaskForm({onAdd, formData,  setFormData}) {
     }
 
     if (name.startsWith("assignee.")) {
+
       const field = name.split(".")[1];
 
-      setFormData((prev) => ({
+      setFormData(prev => ({
         ...prev,
         assignee: {
           ...prev.assignee,
@@ -42,85 +49,105 @@ export default function TaskForm({onAdd, formData,  setFormData}) {
       return;
     }
 
-    setFormData((prev) => ({
+    setFormData(prev => ({
       ...prev,
       [name]: value,
     }));
   }
 
   return (
-    <fieldset>
-        <legend>Add new task</legend>
-    <form onSubmit={(e)=>onAdd(e)}>
+    <fieldset className="task-fieldset">
 
-      <div>
-        <label>Title</label>
+      <legend>Add New Task</legend>
 
-        <input
-          type="text"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-        />
-      </div>
+      <form
+        className="task-form"
+        onSubmit={onAdd}
+      >
 
-      <div>
-        <label>Tags</label>
+        <div className="form-group">
+          <label>Title</label>
 
-        <input
-          type="text"
-          name="tags"
-          placeholder="react, hooks"
-          value={formData.tags}
-          onChange={handleChange}
-        />
-      </div>
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+          />
+        </div>
 
-      <div>
-        <label>Assignee Name</label>
+        <div className="form-group">
+          <label>Tags</label>
 
-        <input
-          type="text"
-          name="assignee.name"
-          value={formData.assignee.name}
-          onChange={handleChange}
-        />
-      </div>
+          <input
+            type="text"
+            name="tags"
+            placeholder="react, hooks"
+            value={formData.tags}
+            onChange={handleChange}
+          />
+        </div>
 
-      <div>
-        <label>Assignee Level</label>
+        <div className="form-group">
+          <label>Assignee Name</label>
 
-        <select
-          name="assignee.level"
-          value={formData.assignee.level}
-          onChange={handleChange}
-        >
-          <option value="junior">Junior</option>
-          <option value="middle">Middle</option>
-          <option value="senior">Senior</option>
-        </select>
-      </div>
+          <input
+            type="text"
+            name="assignee.name"
+            value={formData.assignee.name}
+            onChange={handleChange}
+          />
+        </div>
 
-      <div>
-        <label>Done</label>
+        <div className="form-group">
+          <label>Assignee Level</label>
 
-        <input
-          type="checkbox"
-          name="isDone"
-          checked={formData.isDone}
-          onChange={handleChange}
-        />
-      </div>
+          <select
+            name="assignee.level"
+            value={formData.assignee.level}
+            onChange={handleChange}
+          >
+            <option value="junior">Junior</option>
+            <option value="middle">Middle</option>
+            <option value="senior">Senior</option>
+          </select>
+        </div>
 
-      <button >
-        Create Task
-      </button>
+        <div className="checkbox-group">
+          <label htmlFor="done-checkbox">
+            Done
+          </label>
 
-      <button type="button" onClick={handleClearForm}>
-        Clear Form
-      </button>
+          <input
+            id="done-checkbox"
+            type="checkbox"
+            name="isDone"
+            checked={formData.isDone}
+            onChange={handleChange}
+          />
+        </div>
 
-    </form>
+        <div className="button-group">
+
+          <button
+            type="submit"
+            className="primary-btn"
+          >
+            Create Task
+          </button>
+
+          <button
+            type="button"
+            className="secondary-btn"
+            onClick={handleClearForm}
+          >
+            Clear Form
+          </button>
+
+        </div>
+
+      </form>
+
     </fieldset>
   );
 }
