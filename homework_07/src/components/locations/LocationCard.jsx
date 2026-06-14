@@ -9,12 +9,10 @@ export default function LocationCard() {
   const { data: location = {}, isLoading, isError, error } = useLocation(id);
   const isFavourite = useFavStore(state=>state.isFavourite);
   const toggleFavourite = useFavStore(state=>state.toggleFavourite);
-  const favourites = useFavStore(state => state.favourites);
+
 
   const navigate = useNavigate();
 
-  console.log(isFavourite(location.id));
-  console.log(favourites,"favs");
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{error.message}</p>;
 
