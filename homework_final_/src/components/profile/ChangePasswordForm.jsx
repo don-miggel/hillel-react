@@ -50,7 +50,7 @@ export default function ChangePasswordForm() {
 
   return (
     <div className="space-y-6 rounded-lg border bg-card p-8 shadow-sm">
-        <div className="w-full max-w-2xl space-y-8 rounded-lg border bg-card p-8 shadow-sm">
+
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 
@@ -104,7 +104,7 @@ export default function ChangePasswordForm() {
           </Button>
         </form>
       </div>
-      </div>
+      
 
   )
 }

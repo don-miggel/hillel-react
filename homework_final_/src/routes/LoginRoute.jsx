@@ -3,9 +3,20 @@ import LoginForm from '../components/auth/LoginForm'
 
 export default function LoginRoute() {
   return (
-  <>
-    <h3 className="scroll-m-20 text-lg font-semibold tracking-tight">Login Route Title</h3>
-    <LoginForm />
-  </>
-  )
+    <div className="w-full max-w-md space-y-6">
+
+      <div>
+        <h2 className="text-2xl font-bold">
+          Sign in
+        </h2>
+
+        <p className="text-muted-foreground">
+          Enter your credentials
+        </p>
+      </div>
+
+      <LoginForm />
+
+    </div>
+  );
 }

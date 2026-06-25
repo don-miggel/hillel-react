@@ -8,7 +8,7 @@ import AnalyticsRoute from "../routes/AnalyticsRoute";
 import FavoritesRoute from "../routes/FavoritesRoute";
 import ProfileRoute from "../routes/ProfileRoute";
 import HomeRoute from "../routes/HomeRoute";
-import PublicRoute from "./ProtectedRoute";
+import PublicRoute from "./PublicRoute";
 import ProtectedRoute from "./ProtectedRoute";
 import NotFoundRoute from "../routes/NotFoundRoute";
 import LocationDetailsRoute from "../routes/LocationDetailsRoute";
