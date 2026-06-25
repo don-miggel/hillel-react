@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query"
 import { useNavigate } from "react-router"
-import { authApi } from "../api/ authApi"
+import { authApi } from "../api/authApi"
 import { useAuthStore } from "../store/authStore"
 
 export function useLogin() {

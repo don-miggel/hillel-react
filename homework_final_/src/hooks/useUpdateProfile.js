@@ -8,12 +8,19 @@ export function useUpdateProfile() {
   const authUser = useAuthStore((state) => state.user);
   const setAuth = useAuthStore((state) => state.setAuth);
 
+
+
   return useMutation({
-    mutationFn: (payload) =>
+    
+    mutationFn: async (payload) => {
+      const user = await usersApi.get(authUser.id);
+      
       usersApi.put({
         id: authUser.id,
         ...payload,
-      }),
+        password: user.password
+      })
+    },
 
     onSuccess: (updatedUser) => {
       const { password, ...safeUser } = updatedUser;

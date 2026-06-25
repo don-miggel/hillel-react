@@ -3,7 +3,7 @@ import { useAuthStore } from "../../store/authStore";
 import { Button } from "../ui/button";
 import { LogOut } from "lucide-react";
 
-export default function LogoutForm() {
+export default function LogoutButton() {
   const logout = useAuthStore((state) => state.logout);
   const navigate = useNavigate();
 

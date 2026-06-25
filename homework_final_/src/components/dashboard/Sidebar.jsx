@@ -1,11 +1,11 @@
 import React from 'react'
 import { NavLink } from 'react-router'
-import LogoutForm from '../auth/LogoutButton';
+import LogoutButton from '../auth/LogoutButton';
 import { Map, BarChart2, Star, User, MapPin } from "lucide-react";
 
 export default function Sidebar() {
   return (
-    <aside bg-gray-50 className="w-56 border-r bg-card p-4 shadow-sm flex flex-col ">
+    <aside  className="w-56 bg-gray-50 border-r bg-card p-4 shadow-sm flex flex-col ">
       <div>
 
       <div className="flex items-center gap-3 mb-6">
@@ -74,7 +74,7 @@ export default function Sidebar() {
       </div>
 
       <div className="mt-6">
-        <LogoutForm />
+        <LogoutButton />
       </div>
     </aside>
   );

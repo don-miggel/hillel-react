@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { useSearchParams } from "react-router";
 import { SORT_OPTIONS } from "@/components/constants/locationFilters";
 
-export function useFilteredLocations(locations) {
+export function useFilteredLocations(locations=[]) {
   const [searchParams] = useSearchParams();
 
   const search = searchParams.get("search") || "";

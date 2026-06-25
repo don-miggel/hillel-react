@@ -76,7 +76,7 @@ export default function EditProfileForm() {
 
   return (
     <div className="space-y-8 rounded-lg border bg-card p-8 shadow-sm">
-      <div className="w-full max-w-2xl space-y-8 rounded-lg border bg-card p-8 shadow-sm">
+
  
         <div className="flex items-center gap-4">
           <div className="flex h-16 w-16 items-center text-white justify-center rounded-full bg-primary text-card-foreground text-xl font-semibold">
@@ -145,7 +145,6 @@ export default function EditProfileForm() {
             </Button>
           </form>
         </div>
-      </div>
     </div>
   );
 }
